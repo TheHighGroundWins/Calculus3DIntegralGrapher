@@ -20,8 +20,6 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
-    UnityEditor.UI.dll:
-    - UnityEditor.UI.ImageEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -64,43 +62,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1466}
     - Class: 114
-      Script: {instanceID: 1522}
+      Script: {instanceID: 1524}
     - Class: 114
-      Script: {instanceID: 1602}
+      Script: {instanceID: 1604}
     - Class: 114
-      Script: {instanceID: 1714}
+      Script: {instanceID: 1716}
     - Class: 114
-      Script: {instanceID: 1964}
+      Script: {instanceID: 1972}
     - Class: 114
-      Script: {instanceID: 2130}
+      Script: {instanceID: 2138}
     - Class: 114
-      Script: {instanceID: 2222}
+      Script: {instanceID: 2230}
     - Class: 114
-      Script: {instanceID: 2254}
+      Script: {instanceID: 2262}
     - Class: 114
-      Script: {instanceID: 2356}
+      Script: {instanceID: 2364}
     - Class: 114
-      Script: {instanceID: 2394}
+      Script: {instanceID: 2402}
     - Class: 114
-      Script: {instanceID: 2502}
+      Script: {instanceID: 2512}
     - Class: 114
-      Script: {instanceID: 2680}
+      Script: {instanceID: 2692}
     - Class: 114
-      Script: {instanceID: 2758}
+      Script: {instanceID: 2770}
     - Class: 114
-      Script: {instanceID: 2832}
+      Script: {instanceID: 2844}
     - Class: 114
-      Script: {instanceID: 2906}
+      Script: {instanceID: 2916}
     - Class: 114
-      Script: {instanceID: 3496}
+      Script: {instanceID: 3516}
     - Class: 114
-      Script: {instanceID: 3616}
+      Script: {instanceID: 3636}
     - Class: 114
-      Script: {instanceID: 3632}
+      Script: {instanceID: 3652}
     - Class: 114
-      Script: {instanceID: 3796}
+      Script: {instanceID: 3816}
     - Class: 114
-      Script: {instanceID: 3874}
+      Script: {instanceID: 3894}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -222,12 +220,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Menu
-  - hash:
-      serializedVersion: 2
-      Hash: 5f170942ee57c7a568f5bcfc7521adea
-    assemblyName: UnityEngine.TestRunner.dll
-    namespaceName: UnityEngine.TestTools
-    className: EnumerableTestState
   - hash:
       serializedVersion: 2
       Hash: 4e3f49d96787bc1edd8078b19a41c281
@@ -585,4 +577,4 @@ ScriptsOnlyBuild:
   platform: 24
   scenePathNames:
   - Assets/Scenes/MainScreen.unity
-  playerPath: /home/jc/Documents/UnityProjects/CalculusProject/CalculusProjectLinux.x86_64
+  playerPath: /home/jc/Documents/UnityProjects/CalculusProject/CalculusProjectLinux/CalculusProjectLinux.x86_64

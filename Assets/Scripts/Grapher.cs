@@ -6,6 +6,7 @@ public class Grapher : MonoBehaviour
 {
     [SerializeField]
     GameObject points;
+    GameObject currentObject;
 
     int totalRotation = 0;
 
@@ -87,38 +88,68 @@ public class Grapher : MonoBehaviour
         }
         else
         {
-            if (totalRotation < 150)
+            if (totalRotation < 360)
             {
-                for (float i = 0.005f; i < 5; i += 0.005f)
+                Vector2[] vertices = new Vector2[10];
+
+                currentObject = new GameObject();
+
+
+                for (int i = 0; i < 10; i++)
                 {
-                    GameObject tempObject = Instantiate<GameObject>(points, transform);
+
                     if (inputOne == -1)
                     {
-                        tempObject.transform.position = new Vector3(i,
-                        FunctionSelector(i, inputTwo), 0);
+                        vertices[i] = new Vector2(i, FunctionSelector(i, inputTwo));
                     }
                     else if (inputTwo == -1)
                     {
-                        tempObject.transform.position = new Vector3(i,
-                        FunctionSelector(i, i), 0);
+                        vertices[i] = new Vector2(i, FunctionSelector(i, i));
                     }
                     else if (inputOne == -1 && inputTwo == -1)
                     {
-                        tempObject.transform.position = new Vector3(i,
-                        FunctionSelector(i, i), 0);
+                        vertices[i] = new Vector2(i, FunctionSelector(i, i));
                     }
                     else
                     {
-                        tempObject.transform.position = new Vector3(i,
-                        FunctionSelector(inputOne, inputTwo), 0);
+                        vertices[i] = new Vector2(i, FunctionSelector(inputOne, inputTwo));
                     }
                 }
+                PolygonCreator(vertices);
 
-                transform.RotateAround(new Vector3(x, z, y),
-                new Vector3(xAxis, yAxis, zAxis), 10 * Time.deltaTime);
+                currentObject.transform.RotateAround(new Vector3(x, z, y),
+                new Vector3(xAxis, yAxis, zAxis), 100000*Time.deltaTime);
+
                 totalRotation++;
             }
         }
+    }
+
+    void PolygonCreator(Vector2[] vertices2D)
+    {
+
+        var vertices3D = System.Array.ConvertAll<Vector2, Vector3>(vertices2D, v => v);
+
+        // Use the triangulator to get indices for creating triangles
+        var triangulator = new Triangulator(vertices2D);
+        var indices = triangulator.Triangulate();
+
+        // Create the mesh
+        var mesh = new Mesh
+        {
+            vertices = vertices3D,
+            triangles = indices,
+        };
+
+        mesh.RecalculateNormals();
+        mesh.RecalculateBounds();
+
+        // Set up game object with mesh;
+        var meshRenderer = currentObject.AddComponent<MeshRenderer>();
+        meshRenderer.material = new Material((Material)Resources.Load("Blue"));
+
+        var filter = currentObject.AddComponent<MeshFilter>();
+        filter.mesh = mesh;
     }
 
     float FunctionSelector(float input, float input2)
