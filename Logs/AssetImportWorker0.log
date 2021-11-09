@@ -2491,3 +2491,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 194.338387 seconds.
+  path: Assets/Resources/Rotation Choices.prefab
+  artifactKey: Guid(ebc430055c962de5d9f4be709fd157ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Rotation Choices.prefab using Guid(ebc430055c962de5d9f4be709fd157ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8014eaaaef320cbe1001ffce5bb961c5') in 0.121010 seconds 
+  Import took 0.124660 seconds .
+
