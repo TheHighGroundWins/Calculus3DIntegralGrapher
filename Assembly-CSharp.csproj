@@ -49,7 +49,6 @@
   <ItemGroup>
      <Compile Include="Assets\Resources\Menu.cs" />
      <Compile Include="Assets\RotationChoices.cs" />
-     <Compile Include="Assets\Scripts\PCModeEnum.cs" />
      <Compile Include="Assets\CameraController.cs" />
      <Compile Include="Assets\Scripts\GraphPicker.cs" />
      <Compile Include="Assets\Scripts\FunctionsEnum.cs" />

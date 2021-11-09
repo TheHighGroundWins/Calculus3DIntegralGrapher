@@ -15,5 +15,4 @@ public static class GlobalVar
     public static float yAxis;
     public static float zAxis;
     public static FunctionsEnum selectedFunction;
-    public static PCModeEnum selectedMode;
 }

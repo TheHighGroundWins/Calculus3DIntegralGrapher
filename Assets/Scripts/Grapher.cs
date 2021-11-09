@@ -21,7 +21,6 @@ public class Grapher : MonoBehaviour
       float yAxis;
       float zAxis;
       FunctionsEnum selectedFunction;
-    PCModeEnum selectedMode;
 
     // Start is called before the first frame update
     void Start()
@@ -37,91 +36,46 @@ public class Grapher : MonoBehaviour
          xAxis=GlobalVar.xAxis;
          yAxis=GlobalVar.yAxis;
          zAxis=GlobalVar.zAxis;
-        selectedMode = GlobalVar.selectedMode;
         selectedFunction = GlobalVar.selectedFunction;
-
-
-        if (selectedMode == PCModeEnum.TOASTER)
-            Camera.main.clearFlags = CameraClearFlags.Nothing;
-        if (selectedMode == PCModeEnum.POWERHOUSE)
-            Camera.main.clearFlags = CameraClearFlags.Skybox;
-
-        if (selectedMode==PCModeEnum.TOASTER)
-        {
-            for (float i = 0.005f; i < 5; i += 0.005f)
-            {
-                GameObject tempObject = Instantiate<GameObject>(points, transform);
-                if (inputOne == -1)
-                {
-                    tempObject.transform.position = new Vector3(i,
-                    FunctionSelector(i, inputTwo), 0);
-                }
-                else if (inputTwo == -1)
-                {
-                    tempObject.transform.position = new Vector3(i,
-                    FunctionSelector(i, i), 0);
-                }
-                else if (inputOne == -1&&inputTwo==-1)
-                {
-                    tempObject.transform.position = new Vector3(i,
-                    FunctionSelector(i, i), 0);
-                }
-                else
-                {
-                        tempObject.transform.position = new Vector3(i,
-                        FunctionSelector(inputOne, inputTwo), 0);
-                }
-            }
-        }
-
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GlobalVar.selectedMode == PCModeEnum.TOASTER)
+        if (totalRotation < 360)
         {
-                transform.RotateAround(new Vector3(x, z, y), 
-                new Vector3(xAxis,yAxis,zAxis), 100 * Time.deltaTime);
-                totalRotation++;
-        }
-        else
-        {
-            if (totalRotation < 360)
+            Vector2[] vertices = new Vector2[10];
+
+            currentObject = new GameObject();
+
+
+            for (int i = 0; i < 10; i++)
             {
-                Vector2[] vertices = new Vector2[10];
 
-                currentObject = new GameObject();
-
-
-                for (int i = 0; i < 10; i++)
+                if (inputOne == -1)
                 {
-
-                    if (inputOne == -1)
-                    {
-                        vertices[i] = new Vector2(i, FunctionSelector(i, inputTwo));
-                    }
-                    else if (inputTwo == -1)
-                    {
-                        vertices[i] = new Vector2(i, FunctionSelector(i, i));
-                    }
-                    else if (inputOne == -1 && inputTwo == -1)
-                    {
-                        vertices[i] = new Vector2(i, FunctionSelector(i, i));
-                    }
-                    else
-                    {
-                        vertices[i] = new Vector2(i, FunctionSelector(inputOne, inputTwo));
-                    }
+                    vertices[i] = new Vector2(i, FunctionSelector(i, inputTwo));
                 }
-                PolygonCreator(vertices);
-
-                currentObject.transform.RotateAround(new Vector3(x, z, y),
-                new Vector3(xAxis, yAxis, zAxis), 100000*Time.deltaTime);
-
-                totalRotation++;
+                else if (inputTwo == -1)
+                {
+                    vertices[i] = new Vector2(i, FunctionSelector(i, i));
+                }
+                else if (inputOne == -1 && inputTwo == -1)
+                {
+                    vertices[i] = new Vector2(i, FunctionSelector(i, i));
+                }
+                else
+                {
+                    vertices[i] = new Vector2(i, FunctionSelector(inputOne, inputTwo));
+                }
             }
+            PolygonCreator(vertices);
+
+            currentObject.transform.RotateAround(new Vector3(x, z, y),
+            new Vector3(xAxis, yAxis, zAxis), 100000*Time.deltaTime);
+
+            totalRotation++;
         }
     }
 
